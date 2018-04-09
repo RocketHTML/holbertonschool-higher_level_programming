@@ -1,2 +1,1 @@
-# holbertonschool-higher_level_programming
-Higher level programming
+# 0x00.py
