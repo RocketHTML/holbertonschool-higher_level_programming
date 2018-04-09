@@ -1,7 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * check_cycle - checks linked list for cycle
@@ -10,35 +8,26 @@
  */
 int check_cycle(listint_t *list)
 {
-	int idx = 0;
+	int idx;
 	int i;
-	int size = 8;
 	listint_t *current = NULL;
-	listint_t **addrs = NULL;
+	listint_t *checker = NULL;
 
-	addrs = malloc(sizeof(listint_t *) * size);
-	if (!addrs)
-		return (1);
+	idx = 0;
 	current = list;
 	while (current)
 	{
-		addrs[idx] = current;
-		for (i = 0; i < idx; i++)
+		i = 0;
+		checker = list;
+		while (i < idx)
 		{
-			if (current == addrs[i])
-			{
-				free(addrs);
+			if (checker == current)
 				return (1);
-			}
+			i++;
+			checker = checker->next;
 		}
 		idx++;
-		if (idx == size)
-		{
-			size *= 2;
-			addrs = realloc(addrs, size);
-		}
 		current = current->next;
 	}
-	free(addrs);
 	return (0);
 }
