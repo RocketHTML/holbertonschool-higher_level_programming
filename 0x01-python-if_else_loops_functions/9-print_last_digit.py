@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def print_last_digit(number):
     digit = int(((number * number) ** (1/2)) % 10)
-    print('{}'.format(digit))
+    print('{}'.format(digit), end='')
     return digit
 
 if __name__ == '__main__':
