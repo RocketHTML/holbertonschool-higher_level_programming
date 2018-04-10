@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-digit = ((number * number) ** (1/2)) % 10
+digit = int(((number * number) ** (1/2)) % 10)
+if number < 0:
+    digit *= -1
 string = "and is 0"
 if digit > 5:
     string = "and is greater than 5"
