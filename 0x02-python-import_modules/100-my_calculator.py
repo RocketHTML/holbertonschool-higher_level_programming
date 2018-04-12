@@ -17,7 +17,7 @@ if __name__ == '__main__':
         if argv[2] == ops[i]:
             choice = i
     if choice is None:
-        print('Unknown operator. Available operators: +, -, *, and /')
+        print('Unknown operator. Available operators: +, -, * and /')
         exit(1)
 
     print('{} {} {} = {}'.format(a, ops[choice], b, funcs[choice](a, b)))
