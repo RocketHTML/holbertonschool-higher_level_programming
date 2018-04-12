@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-from hidden_4 import *
 
 if __name__ == '__main__':
+    from hidden_4 import *
     _names = []
     for name in dir():
         if name[0] != '_':
