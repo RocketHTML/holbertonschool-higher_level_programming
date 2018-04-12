@@ -15,8 +15,8 @@ if __name__ == '__main__':
 
     for i in range(len(ops)):
         if argv[2] == ops[i]:
-            choice = i;
-    if choice == None:
+            choice = i
+    if choice is None:
         print('Unknown operator. Available operators: +, -, *, and /')
         exit(1)
 
