@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def print_list_integer(my_list=[]):
     for x in my_list:
-        print('{}'.format(x))
+        print('{:d}'.format(x))
 
 if __name__ == '__main__':
     my_list = [1, 2, 3, 4, 5]
