@@ -24,7 +24,7 @@ def square_matrix_simple(matrix=[]):
     if len(clone) > 0:
         return matrix_xy(clone, 0, 0)
     else:
-        return matrix
+        return clone
 
 if __name__ == '__main__':
     matrix = []
