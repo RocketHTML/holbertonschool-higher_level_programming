@@ -21,15 +21,13 @@ def matrix_xy(mx, x, y):
 def square_matrix_simple(matrix=[]):
     clone = []
     copy(matrix, clone, 0)
-    return matrix_xy(clone, 0, 0)
-
+    if len(clone) > 0:
+        return matrix_xy(clone, 0, 0)
+    else:
+        return matrix
 
 if __name__ == '__main__':
-    matrix = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-        ]
+    matrix = []
 
     new_matrix = square_matrix_simple(matrix)
     print(new_matrix)
