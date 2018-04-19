@@ -20,9 +20,8 @@ def matrix_xy(mx, x, y):
 
 def square_matrix_simple(matrix=[]):
     clone = []
-    if type(matrix) == list and len(matrix) > 0:
-        copy(matrix, clone, 0)
-        return matrix_xy(clone, 0, 0)
+    copy(matrix, clone, 0)
+    return matrix_xy(clone, 0, 0)
 
 
 if __name__ == '__main__':
