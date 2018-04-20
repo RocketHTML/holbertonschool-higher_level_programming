@@ -4,6 +4,7 @@ def best_score(a_dictionary):
         return None
     vals = [tuple(reversed((a, b))) for (a, b) in a_dictionary.items()]
     vals.sort()
+    vals.reverse()
     return vals[0][1]
 
 if __name__ == '__main__':
