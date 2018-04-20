@@ -5,8 +5,8 @@ def roman_to_int(roman_string):
     for i in range(len(roman_string)):
         result += IV[roman_string[i]]
         if i + 1 < len(roman_string) and IV[roman_string[i]] <\
-           IV[roman_string[i]]:
-            result -= IV[roman_string[i]]
+           IV[roman_string[i + 1]]:
+            result -= IV[roman_string[i]] * 2
     return result
 
 
