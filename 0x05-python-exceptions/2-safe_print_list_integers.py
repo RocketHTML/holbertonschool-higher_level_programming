@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def safe_print_list_integers(my_list=[], x=0):
     n = 0
-    for i in range(x):
+    for i in [1, 2, 3, 4, 5, 6, 7]:
         try:
             print("{:d}".format(my_list[i]), end='')
         except ValueError:
