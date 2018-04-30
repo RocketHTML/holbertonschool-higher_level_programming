@@ -6,8 +6,6 @@ def safe_print_list_integers(my_list=[], x=0):
             print("{:d}".format(my_list[i]), end='')
         except (ValueError, TypeError):
             continue
-        except IndexError:
-            break
         else:
             n += 1
     print()
@@ -16,10 +14,6 @@ def safe_print_list_integers(my_list=[], x=0):
 if __name__ == '__main__':
     my_list = [1, 2, 3, 4, 5]
 
-    nb_print = safe_print_list_integers(my_list, 2)
+    nb_print = safe_print_list_integers(my_list, 10)
     print("nb_print: {:d}".format(nb_print))
 
-    #my_list = [1, 2, 3, "Holberton", 4, 5, [1, 2, 3]]
-    #print("nb_print: {:d}".format(nb_print))
-
-    #print("nb_print: {:d}".format(nb_print))
