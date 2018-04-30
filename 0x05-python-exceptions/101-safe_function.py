@@ -19,7 +19,6 @@ if __name__ == '__main__':
     result = safe_function(my_div, 10, 0)
     print("result of my_div: {}".format(result))
 
-
     def print_list(my_list, len):
         i = 0
         while i < len:
