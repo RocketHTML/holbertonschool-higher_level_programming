@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
-Module to find the max integer
+Test of the max integer module
+
+This test case ensures the max integer function handles
+type checks when computing the correct answer
 """
 import unittest
 max_integer = __import__('6-max_integer').max_integer
@@ -13,6 +16,8 @@ class TestMaxInteger(unittest.TestCase):
     def test_max_integer(self):
         '''
         Test if integer is max integer
+
+
         '''
         result = max_integer([1, 4, 3, 2])
         self.assertEqual(result, 4)
@@ -22,6 +27,8 @@ class TestMaxInteger(unittest.TestCase):
     def test_isint(self):
         '''
         Test to check variable against integer
+
+
         '''
         var = 1
         self.assertTrue(max_integer([var, 2]) == 2)
@@ -31,12 +38,16 @@ class TestMaxInteger(unittest.TestCase):
     def test_float_integer(self):
         '''
         Test to see if float is max integer
+
+
         '''
         self.assertEqual(max_integer([4.0, 3, 2]), 4.0)
 
     def test_negative_integer(self):
         '''
         Test only negative integers
+
+
         '''
         self.assertEqual(max_integer([-1, -2, -5]), -1)
 
