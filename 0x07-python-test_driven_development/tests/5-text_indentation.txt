@@ -1,4 +1,9 @@
->>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_module = __import__("5-text_indentation")
+>>> no_imports = __import__('testing_util').no_imports
+>>> no_imports(text_module, ['text_indentation'])
+True
+
+>>> text_indentation = text_module.text_indentation
 
 =======================================================================
 Traceback (most recent call last):
