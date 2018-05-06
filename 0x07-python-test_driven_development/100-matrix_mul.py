@@ -1,13 +1,21 @@
 #!/usr/bin/python3
+"""
+This module multiplies 2 matrixes
+Raises ValueError TypeError
+"""
+
 
 def matrix_mul(m_a, m_b):
+    """
+    multiplies 2 matrixes
+    """
     err_li = (TypeError, '{} must be a list')
     err_lili = (TypeError, '{} must be a list of lists')
     err_empt = (ValueError, "{} can't be empty")
     err_num = (TypeError, "{} should contain only integers or floats")
     err_rec = (TypeError, "each row of {} must should be of the same size")
     err_comp = (ValueError, "m_a and m_b can't be multiplied")
-    
+
     if type(m_a) != list:
         raise err_li[0](err_li[1].format('m_a'))
     if type(m_b) != list:
