@@ -1,4 +1,9 @@
->>> print_square = __import__("4-print_square").print_square
+>>> square_module = __import__("4-print_square")
+>>> no_imports = __import__('testing_util').no_imports
+>>> no_imports(square_module, ['print_square'])
+True
+
+>>> print_square = square_module.print_square
 
 =======================================================================
 Traceback (most recent call last):
