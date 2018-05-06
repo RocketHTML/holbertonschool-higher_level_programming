@@ -1,7 +1,24 @@
 #!/usr/bin/python3
+"""matrix division module
 
+    This module holds matrix calculation functions
+
+    Example:
+        >>> matrix_divided([[100, 100],[100, 100], 3])
+        [[33.33, 33.33],[33.33, 33.33]]
+
+"""
 
 def matrix_divided(matrix, div):
+    """divides elements in matrix
+
+        Args:
+            matrix (list of lists): matrix of values
+            div (int, float): divisor
+
+        Returns:
+            new matrix of quotients
+    """
     err_list = 'matrix must be a matrix (list of lists) of integers/floats'
     err_size = 'Each row of the matrix must have the same size'
     err_divnum = 'div must be a number'

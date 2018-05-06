@@ -8,6 +8,12 @@ Params may be floats, but they will be casted into ints.
 def add_integer(a, b=98):
     """adds a and b
 
+        Args:
+            a (int, float): first number
+            b (int, float): second number
+
+        Returns:
+            int: sum of a and b
     """
     if type(a) != int and type(a) != float:
         raise TypeError("a must be an integer")
