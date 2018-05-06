@@ -1,4 +1,8 @@
->>> say_my_name = __import__("3-say_my_name").say_my_name
+>>> say_module = __import__("3-say_my_name")
+>>> no_imports = __import__('testing_util').no_imports
+>>> no_imports(say_module, ['say_my_name'])
+True
+>>> say_my_name = say_module.say_my_name
 
 =======================================================================
 
