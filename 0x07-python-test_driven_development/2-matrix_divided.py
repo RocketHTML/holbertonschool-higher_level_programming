@@ -26,7 +26,7 @@ def matrix_divided(matrix, div):
         for ele in li:
             if not (isinstance(ele, int) or isinstance(ele, float)):
                 raise TypeError(err_list)
-            new_matrix[i].append(ele / div)
+            new_matrix[i].append(float('{:.2f}'.format(float(ele) / float(div))))
         i += 1
     
     return new_matrix

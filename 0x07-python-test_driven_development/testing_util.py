@@ -21,3 +21,17 @@ def no_imports(module, accepted):
         if obj not in correct:
 	        return False
     return True
+
+def check_matrix_precision(matrix, p):
+    def precision(num, prec):
+        if type(num) != float:
+            return False
+        rep = str(num)
+        left, right = rep.split('.')
+        return len(right) <= prec
+
+    for li in matrix:
+        for ele in li:
+            if not precision(ele, p):
+                return False
+    return True

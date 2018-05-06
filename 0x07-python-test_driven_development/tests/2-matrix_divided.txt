@@ -1,5 +1,6 @@
 >>> matrix_module = __import__("2-matrix_divided")
->>> no_imports = __import__("testing_util").no_imports
+>>> util = __import__("testing_util")
+>>> no_imports, precision = util.no_imports, util.check_matrix_precision
 >>> no_imports(matrix_module, ['matrix_divided'])
 True
 >>> matrix_divided = matrix_module.matrix_divided
@@ -96,7 +97,8 @@ ZeroDivisionError: division by zero
 ================================================
 Output must be rounded 2 decimal places
 ================================================
-
+>>> matrix_divided([[100, 100], [100, 100]], 3)
+[[33.33, 33.33], [33.33, 33.33]]
 
 ================================================
 Returns a new matrix
