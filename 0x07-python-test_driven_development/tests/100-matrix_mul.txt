@@ -104,3 +104,11 @@ TypeError: matrix_mul() takes exactly 2 arguments (1 given)
 >>> matrix_mul()
 Traceback (most recent call last):
 TypeError: matrix_mul() takes exactly 2 arguments (0 given)
+
+>>> matrix_mul([[]])
+Traceback (most recent call last):
+TypeError: matrix_mul() takes exactly 2 arguments (1 given)
+
+>>> matrix_mul("lol", [[1, 2]])
+Traceback (most recent call last):
+TypeError: m_a must be a list
