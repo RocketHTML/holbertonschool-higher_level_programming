@@ -11,9 +11,9 @@ Test No Imports
 ====================================
 Test Wrong Number of Arguments
 ====================================
->>> matrix_mul()
+>>> matrix_mul([[1, 2, 3]])
 Traceback (most recent call last):
-TypeError: matrix_mul() takes exactly 2 arguments (0 given)
+TypeError: matrix_mul() takes exactly 2 arguments (1 given)
 
 
 ====================================
