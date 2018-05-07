@@ -22,10 +22,17 @@ class RectangleTest(unittest.TestCase):
     """
     def setUp(self):
         self.parameter_test()
+        Rectangle.number_of_instances = 0
+        Rectangle.print_symbol = '#'
 
     def parameter_test(self):
         sig = signature(Rectangle)
         self.assertEqual(len(sig.parameters), 2)
+        try:
+            self.assertIsInstance(str(Rectangle(1, 2)), str)
+            self.assertIsInstance(repr(Rectangle(1, 2)), str)
+        except:
+            self.fail("__str__ or __repr__ returns a non-string")
 
     def test_init(self):
         # Test __init__ arguments
@@ -39,29 +46,45 @@ class RectangleTest(unittest.TestCase):
         rect = Rectangle(2, 3)
         self.assertEqual(rect.width, 2)
         self.assertEqual(rect.height, 3)
-        with self.assertRaises(TypeError, rect.width, "hi") as w:
-            self.assertIsInstance(w.args, tuple)
-            self.assertEqual(w.args[0], "width must be an integer")
+        with self.assertRaises(TypeError) as cm:
+            rect.width = 'hi'
+        wi = cm.exception
+        self.assertEqual(str(wi), 'width must be an integer')
 
-        with self.assertRaises(ValueError, rect.width, -1) as wn:
-            self.assertIsInstance(wn.args, tuple)
-            self.assertEqual(wn.args[0], "width must be >= 0")
+        with self.assertRaises(TypeError) as cm:
+            rect.width = 2.5
+        wi = cm.exception
+        self.assertEqual(str(wi), 'width must be an integer')
 
-        with self.assertRaises(TypeError, rect.height, 2.4) as h:
-            self.assertIsInstance(h.args, tuple)
-            self.assertEqual(h.args[0], "height must be an integer")
+        with self.assertRaises(ValueError) as cm:
+            rect.width = -1
+        wn = cm.exception
+        self.assertEqual(str(wn), 'width must be >= 0')
 
-        with self.assertRaises(ValueError, rect.height, -1) as hn:
-            self.assertIsInstance(hn.args, tuple)
-            self.assertEqual(hn.args[0], "height must be >= 0")
+        with self.assertRaises(TypeError) as cm:
+            rect.height = 'hello'
+        hi = cm.exception
+        self.assertEqual(str(hi), 'height must be an integer')
 
-        with self.assertRaises(TypeError, Rectangle, "hi", 1) as wi:
-            self.assertIsInstance(wi.args, tuple)
-            self.assertEqual(wi.args[0], "width must be an integer")
+        with self.assertRaises(TypeError) as cm:
+            rect.height = 2.3
+        hi = cm.exception
+        self.assertEqual(str(hi), 'height must be an integer')
 
-        with self.assertRaises(ValueError, Rectangle, 1, -1) as hi:
-            self.assertIsInstance(hi.args, tuple)
-            self.assertEqual(hi.args[0], "height must be >= 0")
+        with self.assertRaises(ValueError) as cm:
+            rect.height = -5
+        hn = cm.exception
+        self.assertEqual(str(hn), 'height must be >= 0')
+
+        with self.assertRaises(TypeError) as cm:
+            Rectangle("hi", 1)
+        wi = cm.exception
+        self.assertEqual(str(wi), 'width must be an integer')
+
+        with self.assertRaises(ValueError) as cm:
+            Rectangle(1, -1)
+        hn = cm.exception
+        self.assertEqual(str(hn), 'height must be >= 0')
 
     def test_instance_count(self):
         # Tests instance count
@@ -79,18 +102,28 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(Rectangle.print_symbol, '#')
         rect = Rectangle(3, 3)
         self.assertEqual(str(rect), rep)
-        Rectangle.print_symbol = 1
-        self.assertEqual(str(rect), rep2)
-        Rectangle.print_symbol = []
-        self.assertEqual(str(rect), rep3)
+        try:
+            Rectangle.print_symbol = 1
+            self.assertEqual(str(rect), rep2)
+            Rectangle.print_symbol = []
+            self.assertEqual(str(rect), rep3)
+        except:
+            self.fail("cast print_symbol into a string before printing")
         rect = Rectangle()
-        self.assertEqual(str(rect), '')
+        try:
+            self.assertEqual(str(rect), '')
+        except:
+            self.fail("__str__ should return '' when width and height are 0")
 
+    @unittest.skipIf('area' not in dir(Rectangle), 
+                    'area method must be implemented before testing')
     def test_area(self):
         # Test area method
         rect = Rectangle(3, 3)
         self.assertEqual(rect.area(), 9)
 
+    @unittest.skipIf('perimeter' not in dir(Rectangle),
+                    'perimeter method must be implemented before testing')
     def test_perimeter(self):
         # Test perimeter method
         rect = Rectangle(4, 2)
@@ -98,10 +131,29 @@ class RectangleTest(unittest.TestCase):
         rect = Rectangle(10)
         self.assertEqual(rect.perimeter(), 0)
 
+    def test_str(self):
+        # Tests the __str__ method
+        rect = Rectangle(4, 2)
+        rep = "####\n####\n"
+        rep2 = "[][][][]\n[][][][]\n"
+        self.assertEqual(str(rect), rep)
+        Rectangle.print_symbol = []
+        try:
+            self.assertEqual(str(rect), rep2)
+        except:
+            self.fail("cast print_symbol into a string before printing it")
+
     def test_repr(self):
         # Tests the __repr__ method
         rect = Rectangle(4, 2)
-        assertIsInstance(eval(repr(rect)), Rectangle)
+        try:
+            rect2 = eval(repr(rect))
+        except:
+            self.fail("eval( repr(rect) ) does not produce a new rectangle")
+        else:
+            self.assertEqual(rect.width, rect2.width)
+            self.assertEqual(rect.height, rect2.height)
+            self.assertEqual(Rectangle.number_of_instances, 2)
 
     def test_destructor(self):
         # Test __del__ method
@@ -111,11 +163,13 @@ class RectangleTest(unittest.TestCase):
         del r1
         self.assertEqual(Rectangle.number_of_instances, 0)
 
+    @unittest.skipIf('square' not in dir(Rectangle),
+                    'square method must be implemented before testing')
     def test_square(self):
         # Test class method square
         sqr = Rectangle.square(size=2)
-        assertEqual(sqr.width, 2)
-        assertEqual(sqr.height, 2)
-        assertEqual(Rectangle.number_of_instances, 1)
+        self.assertEqual(sqr.width, 2)
+        self.assertEqual(sqr.height, 2)
+        self.assertEqual(Rectangle.number_of_instances, 1)
         del sqr
-        assertEqual(Rectangle.number_of_instances, 0)
+        self.assertEqual(Rectangle.number_of_instances, 0)
