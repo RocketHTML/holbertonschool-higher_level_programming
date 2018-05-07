@@ -5,6 +5,7 @@ This module demonstrates integer checked addition.
 Params may be floats, but they will be casted into ints.
 """
 
+
 def add_integer(a, b=98):
     """adds a and b
 
