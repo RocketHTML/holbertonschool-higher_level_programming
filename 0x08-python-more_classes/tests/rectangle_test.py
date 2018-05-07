@@ -7,6 +7,12 @@ import sys
 class RectangleTest(unittest.TestCase):
     """ Test case to test the Rectangle class
 
+        Usage:
+            Put your rectangle class into a file named rectangle.py
+            You can then call upon this test module like so:
+                python3 -m unittest -v <path_to_test_module>.py
+            Make sure you call it from the directory containing your rectangle.py file
+
         The complete set of tests will be:
             optional instantiation arguments
             width properties
@@ -20,6 +26,9 @@ class RectangleTest(unittest.TestCase):
             __del__
             bigger_or_equal static method
             square class method
+        
+        Use:
+            Put your rectangle class into a file called rectangle.py
     """
     class PrintTester:
         def __init__(self):
