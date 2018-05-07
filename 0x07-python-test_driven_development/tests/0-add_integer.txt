@@ -36,6 +36,10 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: a must be an integer
 
+>>> add_integer(1, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
+
 >>> add_integer([1, 2, 3], 1)
 Traceback (most recent call last):
 TypeError: a must be an integer
@@ -67,3 +71,9 @@ TypeError: a must be an integer
 >>> add_integer(1, {})
 Traceback (most recent call last):
 TypeError: b must be an integer
+
+>>> add_integer(float('inf'), 1)
+89
+
+>>> add_integer(1, float('inf'))
+89
