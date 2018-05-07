@@ -200,10 +200,19 @@ class RectangleTest(unittest.TestCase):
     @unittest.skipIf('square' not in dir(Rectangle),
                     'square method must be implemented before testing')
     def test_square(self):
-        # Test class method square
+        # Test class creator method square
         sqr = Rectangle.square(size=2)
         self.assertEqual(sqr.width, 2)
         self.assertEqual(sqr.height, 2)
         self.assertEqual(Rectangle.number_of_instances, 1)
         del sqr
         self.assertEqual(Rectangle.number_of_instances, 0)
+
+    @unittest.skipIf('bigger_or_equal' not in dir(Rectangle),
+                    'bigger_or_equal must be implemented before testign')
+    def test_bigger_or_equal(self):
+        # Testing comparison method
+        rect1 = Rectangle(8, 4)
+        rect2 = Rectangle(2, 3)
+        self.assertTrue(Rectangle.bigger_or_equal(rect1, rect2))
+        self.assertFalse(Rectangle.bigger_or_equal(rect2, rect1))
