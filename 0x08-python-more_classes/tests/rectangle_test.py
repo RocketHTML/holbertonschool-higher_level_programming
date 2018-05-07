@@ -214,5 +214,13 @@ class RectangleTest(unittest.TestCase):
         # Testing comparison method
         rect1 = Rectangle(8, 4)
         rect2 = Rectangle(2, 3)
-        self.assertTrue(Rectangle.bigger_or_equal(rect1, rect2))
-        self.assertFalse(Rectangle.bigger_or_equal(rect2, rect1))
+        self.assertEquals(Rectangle.bigger_or_equal(rect1, rect2), rect1)
+        with self.assertRaises(TypeError) as cm:
+            Rectangle.bigger_or_equal(rect1, 5)
+        ex = cm.exception
+        self.assertEquals(str(ex), "rect_2 must be an instance of Rectangle")
+
+        with self.assertRaises(TypeError) as cm:
+            Rectangle.bigger_or_equal(5, rect2)
+        ex = cm.exception
+        self.assertEqual(str(ex), "rect_1 must be an instance of Rectangle")
