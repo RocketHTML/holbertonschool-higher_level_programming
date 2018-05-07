@@ -1,6 +1,7 @@
 import unittest
 from rectangle import Rectangle
 from inspect import signature
+import sys
 
 
 class RectangleTest(unittest.TestCase):
@@ -20,6 +21,16 @@ class RectangleTest(unittest.TestCase):
             bigger_or_equal static method
             square class method
     """
+    class PrintTester:
+        def __init__(self):
+            self.data = []
+
+        def write(self, s):
+            self.data.append(s)
+
+        def __str__(self):
+            return ''.join(self.data)
+
     def setUp(self):
         self.parameter_test()
         Rectangle.number_of_instances = 0
@@ -160,8 +171,16 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(Rectangle.number_of_instances, 0)
         r1 = Rectangle()
         self.assertEqual(Rectangle.number_of_instances, 1)
-        del r1
+
+        stdout_org = sys.stdout
+        print_tester = RectangleTest.PrintTester()
+        try:
+            sys.stdout = print_tester
+            del r1
+        finally:
+            sys.stdout = stdout_org
         self.assertEqual(Rectangle.number_of_instances, 0)
+        self.assertEqual(str(print_tester), "Bye rectangle...\n")
 
     @unittest.skipIf('square' not in dir(Rectangle),
                     'square method must be implemented before testing')

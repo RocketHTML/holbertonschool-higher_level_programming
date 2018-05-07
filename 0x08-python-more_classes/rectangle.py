@@ -102,6 +102,7 @@ class Rectangle:
 
     def __del__(self):
         Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
 
     def __str__(self):
         ret = [str(Rectangle.print_symbol) * self.width + '\n' for i in range(self.height)]
