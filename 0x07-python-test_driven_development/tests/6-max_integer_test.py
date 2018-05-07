@@ -26,7 +26,7 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer([1])
         self.assertEqual(result, 1)
         result = max_integer()
-        self.assertEqual(result, 1)
+        self.assertEqual(result, None)
 
     def test_isint(self):
         '''
