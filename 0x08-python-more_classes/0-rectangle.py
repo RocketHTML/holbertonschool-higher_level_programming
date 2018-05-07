@@ -8,6 +8,7 @@ Example:
 
 """
 
+
 class Rectangle:
     """Defines a Rectangle object
 

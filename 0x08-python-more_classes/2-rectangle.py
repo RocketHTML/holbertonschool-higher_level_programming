@@ -106,11 +106,23 @@ class Rectangle:
         print("Bye rectangle...")
 
     def __str__(self):
-        ret = [str(Rectangle.print_symbol) * self.width + '\n'
-               for i in range(self.height)]
+        ret = [str(Rectangle.print_symbol) * self.width +
+               '\n' for i in range(self.height)]
         print(''.join(ret))
         return ''.join(ret)
 
     def __repr__(self):
         rep = 'Rectangle({}, {})'.format(self.width, self.height)
         return rep
+
+if __name__ == '__main__':
+    my_rectangle = Rectangle(2, 4)
+    print("Area: {} - Perimeter: {}".format(my_rectangle.area(),
+                                            my_rectangle.perimeter()))
+
+    print("--")
+
+    my_rectangle.width = 10
+    my_rectangle.height = 3
+    print("Area: {} - Perimeter: {}".format(my_rectangle.area(),
+                                            my_rectangle.perimeter()))

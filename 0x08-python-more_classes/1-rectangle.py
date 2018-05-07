@@ -8,6 +8,7 @@ Example:
 
 """
 
+
 class Rectangle:
     """Defines a Rectangle object
 
@@ -87,7 +88,7 @@ class Rectangle:
         if value < 0:
             raise ValueError('height must be >= 0')
         self.__height = value
-    
+
     def perimeter(self):
         if self.width == 0 or self.height == 0:
             return 0
@@ -105,7 +106,8 @@ class Rectangle:
         # print("Bye rectangle...") # 1-rectangle.py edit
 
     def __str__(self):
-        ret = [str(Rectangle.print_symbol) * self.width + '\n' for i in range(self.height)]
+        ret = [str(Rectangle.print_symbol) * self.width +
+               '\n' for i in range(self.height)]
         print(''.join(ret))
         return ''.join(ret)
 
