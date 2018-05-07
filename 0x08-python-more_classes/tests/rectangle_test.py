@@ -1,5 +1,6 @@
 import unittest
 from rectangle import Rectangle
+from inspect import signature
 
 
 class RectangleTest(unittest.TestCase):
@@ -19,6 +20,12 @@ class RectangleTest(unittest.TestCase):
             bigger_or_equal static method
             square class method
     """
+    def setUp(self):
+        self.parameter_test()
+
+    def parameter_test(self):
+        sig = signature(Rectangle)
+        self.assertEqual(len(sig.parameters), 2)
 
     def test_init(self):
         # Test __init__ arguments
