@@ -23,6 +23,10 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(result, 4)
         result = max_integer([12, 9, 7, 2])
         self.assertEqual(result, 12)
+        result = max_integer([1])
+        self.assertEqual(result, 1)
+        result = max_integer()
+        self.assertEqual(result, 1)
 
     def test_isint(self):
         '''
