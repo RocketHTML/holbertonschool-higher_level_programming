@@ -158,6 +158,7 @@ class RectangleTest(unittest.TestCase):
         # Tests the __str__ method
         rect = Rectangle(4, 2)
         rep = "####\n####\n"
+        rep1 = "****\n****\n"
         rep2 = "[][][][]\n[][][][]\n"
         self.assertEqual(str(rect), rep)
         Rectangle.print_symbol = []
@@ -165,6 +166,8 @@ class RectangleTest(unittest.TestCase):
             self.assertEqual(str(rect), rep2)
         except:
             self.fail("cast print_symbol into a string before printing it")
+        rect.print_symbol = '*'
+        self.assertEqual(str(rect), rep1)
 
     def test_repr(self):
         # Tests the __repr__ method
