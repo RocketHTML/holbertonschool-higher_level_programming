@@ -15,9 +15,6 @@ Test Wrong Number of Arguments
 Traceback (most recent call last):
 TypeError: matrix_mul() takes exactly 2 arguments (0 given)
 
->>> matrix_mul([[1, 2, 3]])
-Traceback (most recent call last):
-TypeError: matrix_mul() takes exactly 2 arguments (1 given)
 
 ====================================
 Test Basic Output
