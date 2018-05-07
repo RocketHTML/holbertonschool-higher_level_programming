@@ -102,3 +102,10 @@ TypeError: last_name must be a string
 >>> say_my_name("Holberton", [[6], [6, 6], [6]])
 Traceback (most recent call last):
 TypeError: last_name must be a string
+
+========================================
+Correct output
+========================================
+
+>>> say_my_name("Holberton", "Cool")
+My name is Holberton Cool
