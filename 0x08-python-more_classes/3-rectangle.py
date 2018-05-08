@@ -101,8 +101,6 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         return Rectangle(size, size)
-    '''
-    '''
     def __del__(self):
         Rectangle.number_of_instances -= 1
         # print("Bye rectangle...")
@@ -111,7 +109,7 @@ class Rectangle:
     def __str__(self):
         ret = [str(self.print_symbol) * self.width + '\n'
                for i in range(self.height)]
-        if len(ret) > 0:
+        if height > 0 and width > 0:
             return ''.join(ret)[0:-1]
         return ''
 
@@ -120,7 +118,7 @@ class Rectangle:
         return rep"""
 
 if __name__ == '__main__':
-    my_rectangle = Rectangle(2, 4)
+    my_rectangle = Rectangle(0, 4)
     print("Area: {} - Perimeter: {}".
           format(my_rectangle.area(), my_rectangle.perimeter()))
 
