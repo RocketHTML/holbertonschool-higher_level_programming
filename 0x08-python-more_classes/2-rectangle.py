@@ -96,7 +96,7 @@ class Rectangle:
 
     def area(self):
         return self.width * self.height
-
+    '''
     @classmethod
     def square(cls, size=0):
         return Rectangle(size, size)
@@ -106,15 +106,16 @@ class Rectangle:
         print("Bye rectangle...")
 
     def __str__(self):
-        ret = [str(Rectangle.print_symbol) * self.width +
+        ret = [str(self.print_symbol) * self.width +
                '\n' for i in range(self.height)]
-        print(''.join(ret))
-        return ''.join(ret)
+        if len(ret) > 0:
+            return ''.join(ret)[0:-1]
+        return ''
 
     def __repr__(self):
         rep = 'Rectangle({}, {})'.format(self.width, self.height)
         return rep
-
+    '''
 if __name__ == '__main__':
     my_rectangle = Rectangle(2, 4)
     print("Area: {} - Perimeter: {}".format(my_rectangle.area(),
