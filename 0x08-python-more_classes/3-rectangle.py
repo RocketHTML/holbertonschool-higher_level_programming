@@ -109,7 +109,7 @@ class Rectangle:
     def __str__(self):
         ret = [str(self.print_symbol) * self.width + '\n'
                for i in range(self.height)]
-        if height > 0 and width > 0:
+        if self.height > 0 and self.width > 0:
             return ''.join(ret)[0:-1]
         return ''
 
