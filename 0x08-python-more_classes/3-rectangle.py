@@ -97,13 +97,16 @@ class Rectangle:
     def area(self):
         return self.width * self.height
 
+    '''
     @classmethod
     def square(cls, size=0):
         return Rectangle(size, size)
-
+    '''
+    '''
     def __del__(self):
         Rectangle.number_of_instances -= 1
         # print("Bye rectangle...")
+    '''
 
     def __str__(self):
         ret = [str(self.print_symbol) * self.width + '\n'
