@@ -127,7 +127,9 @@ class Rectangle:
     def __str__(self):
         ret = [str(self.print_symbol) * self.width + '\n'
                for i in range(self.height)]
-        return ''.join(ret)
+        if len(ret) > 0:
+            return ''.join(ret)[0:-1]
+        return ''
 
     def __repr__(self):
         rep = 'Rectangle({}, {})'.format(self.width, self.height)

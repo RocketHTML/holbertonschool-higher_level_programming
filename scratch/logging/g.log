@@ -1,0 +1,27 @@
+INFO:root:id: 1
+INFO:root:id: 2
+INFO:root:id: 3
+INFO:root:id: 1
+msg: yes
+took 0.0014240741729736328 sec
+====================
+INFO:root:id: 2
+msg: you
+took 0.0012066364288330078 sec
+====================
+INFO:root:id: 3
+msg: can
+took 0.0013284683227539062 sec
+====================
+INFO:root:id: 1
+msg: yes
+0.98 miliseconds
+====================
+INFO:root:id: 2
+msg: you
+0.74 miliseconds
+====================
+INFO:root:id: 3
+msg: can
+0.47 miliseconds
+====================

@@ -119,9 +119,9 @@ class RectangleTest(unittest.TestCase):
 
     def test_print_symbol(self):
         # Tests print symbol
-        rep = "###\n###\n###\n"
-        rep2 = "111\n111\n111\n"
-        rep3 = "[][][]\n[][][]\n[][][]\n"
+        rep = "###\n###\n###"
+        rep2 = "111\n111\n111"
+        rep3 = "[][][]\n[][][]\n[][][]"
         self.assertEqual(Rectangle.print_symbol, '#')
         rect = Rectangle(3, 3)
         self.assertEqual(str(rect), rep)
@@ -157,9 +157,9 @@ class RectangleTest(unittest.TestCase):
     def test_str(self):
         # Tests the __str__ method
         rect = Rectangle(4, 2)
-        rep = "####\n####\n"
-        rep1 = "****\n****\n"
-        rep2 = "[][][][]\n[][][][]\n"
+        rep = "####\n####"
+        rep1 = "****\n****"
+        rep2 = "[][][][]\n[][][][]"
         self.assertEqual(str(rect), rep)
         Rectangle.print_symbol = []
         try:
