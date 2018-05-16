@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
+
 Rectangle = __import__('rectangle_pre').Rectangle
 
+
 class Square(Rectangle):
-	def __init__(self, size):
-		super().__init__(size, size)
+    def __init__(self, size):
+        super().__init__(size, size)
