@@ -1,0 +1,13 @@
+>>> Square = __import__('10-square').Square
+
+>>> s = Square(13)
+
+>>> print(s)
+[Rectangle] 13/13
+
+>>> s.area()
+169
+
+>>> f = Square("waterloo")
+Traceback (most recent call last):
+TypeError: width must be an integer
