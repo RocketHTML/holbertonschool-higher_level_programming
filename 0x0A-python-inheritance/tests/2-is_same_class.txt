@@ -1,0 +1,16 @@
+>>> is_same_class = __import__('2-is_same_class').is_same_class
+
+>>> a = 1
+
+>>> is_same_class(a, int)
+True
+
+>>> is_same_class(a, float)
+False
+
+>>> e = Exception
+
+>>> b = BaseException
+
+>>> is_same_class(e, BaseException)
+False
