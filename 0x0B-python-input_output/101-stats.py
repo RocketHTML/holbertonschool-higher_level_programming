@@ -5,7 +5,7 @@ import sys
 class Statician:
     def __init__(self):
         self.codes = [200, 401, 403, 404, 405, 500]
-        self.d = {200:0, 401:0, 403:0, 404:0, 405:0, 500:0}
+        self.d = {200: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
         self.size = 0
         self.requests = 0
 
