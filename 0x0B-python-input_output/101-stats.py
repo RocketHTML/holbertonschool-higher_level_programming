@@ -21,8 +21,11 @@ class Statician:
             self.requests += 1
             chunks = line.split()
             try:
-                code = int(chunks[-2])
                 file_size = int(chunks[-1])
+            except (ValueError, IndexError):
+                return True
+            try:
+                code = int(chunks[-2])
                 if code not in self.codes:
                     self.codes.append(code)
                     self.codes.sort()
@@ -33,7 +36,7 @@ class Statician:
                     self.size += file_size
                 return True
             except (IndexError, ValueError):
-                self.size += int(chunks[-1])
+                self.size += file_size
                 return True
         else:
             return False
