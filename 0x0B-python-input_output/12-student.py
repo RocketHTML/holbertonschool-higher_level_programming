@@ -12,7 +12,7 @@ class Student:
             return vars(self)
         else:
             d = {}
-            for k, v in vars(self):
+            for k, v in vars(self).items():
                 if k in attrs:
                     d[k] = v
             return d

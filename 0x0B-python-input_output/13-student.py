@@ -12,13 +12,13 @@ class Student:
             return vars(self)
         else:
             d = {}
-            for k, v in vars(self):
+            for k, v in vars(self).items():
                 if k in attrs:
                     d[k] = v
             return d
 
     def reload_from_json(self, json):
         attrs = set(vars(self))
-        for k, v in json:
+        for k, v in json.items():
             if k in attrs:
                 setattr(self, k, v)
