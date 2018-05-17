@@ -13,4 +13,7 @@ def append_after(filename="",
 
     with open(filename, mode='w', encoding='utf-8') as f:
         for line in L:
-            print(line, file=f)
+            print(line, file=f, end='')
+
+if __name__ == '__main__':
+    append_after('t.txt', 'pie', 'found you')
