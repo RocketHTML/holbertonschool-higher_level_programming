@@ -12,7 +12,8 @@ class Statician:
     def output(self):
         print("File size: {}".format(self.size))
         for code in self.codes:
-            print("{}: {}".format(code, self.d[code]))
+            if self.d[code] > 0:
+                print("{}: {}".format(code, self.d[code]))
 
     def update(self):
         line = sys.stdin.readline()
@@ -25,15 +26,17 @@ class Statician:
                 if code in self.codes:
                     self.d[code] += 1
                     self.size += file_size
+                    return True
             except IndexError:
-                pass
+                return False
+        else:
+            return False
 
 
 if __name__ == '__main__':
     stats = Statician()
     try:
-        while True:
-            stats.update()
+        while stats.update():
             if stats.requests % 10 == 0:
                 stats.output()
     except KeyboardInterrupt:
