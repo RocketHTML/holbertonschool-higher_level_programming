@@ -33,6 +33,7 @@ class Statician:
                     self.size += file_size
                 return True
             except (IndexError, ValueError):
+                self.size += int(chunks[-1])
                 return True
         else:
             return False
