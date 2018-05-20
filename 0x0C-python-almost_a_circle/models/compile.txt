@@ -1,4 +1,4 @@
 test to make sure everything still compiles
 
->>> from rectangle import Rectangle
+>>> from models.rectangle import Rectangle
 >>> a = Rectangle(1, 2)
