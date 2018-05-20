@@ -2,6 +2,7 @@
 import json
 import inspect
 import csv
+import turtle
 
 
 class Base:
@@ -13,6 +14,24 @@ class Base:
             self.id = Base.__nb_objects
         else:
             self.id = id
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        def drawrect(turt, x, y, width, height):
+            turt.setpos(x, y)
+            turt.down()
+            turt.goto(x+width, y)
+            turt.goto(x+width, y+height)
+            turt.goto(x, y+height)
+            turt.goto(x,y)
+            turt.up()
+        turgle = turtle.Turtle()
+        for r in list_rectangles:
+            turgle.color('red')
+            drawrect(turgle, r.x, r.y, r.width, r.height)	
+        for s in list_squares:
+            turgle.color('blue')
+            drawrect(turtle, s.x, s.y, s.width, s.height)
 
     @classmethod
     def load_from_file_csv(cls):
