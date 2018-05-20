@@ -1,0 +1,85 @@
+Test Base, Rectangle, and Square classes
+
+>>> from rectangle import Rectangle
+
+>>> a = Rectangle(1, 2)
+
+>>> a.width = 1
+
+>>> a.width = '1'
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> a.width = -1
+Traceback (most recent call last):
+ValueError: width must be > 0
+
+>>> a.x = -1
+Traceback (most recent call last):
+ValueError: x must be >= 0
+
+>>> a.area()
+2
+
+>>> a.display()
+#
+#
+
+>>> b  = Rectangle(2, 3, 2, 2)
+>>> b.display()
+<BLANKLINE>
+<BLANKLINE>
+  ##
+  ##
+  ##
+
+creating c does not update id variables
+--------------------------------------
+>>> c = Rectangle(4, 6, 2, 1, 12)
+>>> print(c)
+[Rectangle] (12) 2/1 - 4/6
+
+>>> d = Rectangle(5, 5, 1)
+>>> print(d)
+[Rectangle] (3) 1/0 - 5/5
+
+>>> d.update(89, 2, 3, 4, 5)
+>>> print(d)
+[Rectangle] (89) 4/5 - 2/3
+
+>>> d.update(width=5)
+>>> print(d)
+[Rectangle] (89) 4/5 - 5/3
+
+Now to test square class
+------------------------------------------
+
+>>> from square import Square
+>>> shape5 = Square(2, 2, 0)
+>>> print(shape5)
+[Square] (4) 2/0 - 2
+
+>>> shape5.display()
+  ##
+  ##
+
+>>> shape5.size
+2
+
+>>> shape5.size = 10
+>>> shape5.size
+10
+
+>>> shape5.size = -1
+Traceback (most recent call last):
+ValueError: width must be > 0
+
+>>> len(c.to_dictionary()) == 5
+True
+
+>>> len(shape5.to_dictionary()) == 4
+True
+
+>>> l = [c.to_dictionary(), shape5.to_dictionary()]
+>>> print(type(shape5.to_json_string(l)))
+<class 'str'>
