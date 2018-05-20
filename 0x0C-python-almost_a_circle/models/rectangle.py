@@ -28,6 +28,10 @@ class Rectangle(Base):
         attrs = ['id', 'width', 'height', 'x', 'y']
         return self.make_dict(self, attrs)
 
+    @staticmethod
+    def attrs():
+        return ['id', 'width', 'height', 'x', 'y']
+
     def update(self, *args, **kwargs):
         attrs = ['id', 'width', 'height', 'x', 'y']
         self.setattrs_from_splat(self, attrs, *args, **kwargs)

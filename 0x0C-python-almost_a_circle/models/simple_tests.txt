@@ -80,6 +80,43 @@ True
 >>> len(shape5.to_dictionary()) == 4
 True
 
->>> l = [c.to_dictionary(), shape5.to_dictionary()]
->>> print(type(shape5.to_json_string(l)))
+>>> rlist = [c.to_dictionary()]
+>>> slist = [shape5.to_dictionary()]
+>>> print(type(shape5.to_json_string(slist)))
 <class 'str'>
+>>> Rectangle.save_to_file(rlist)
+>>> with open("Rectangle.json", "r") as f:
+...    print(f.read()) #doctest: +SKIP
+[{"id": 12, "y": 1, "x": 2, "height": 6, "width": 4}, {"id": 4, "size": 10, "y": 0, "x": 2}]
+>>> Square.save_to_file(slist)
+>>> js = []
+>>> with open("Square.json", "r") as f:
+...    js = f.read()
+>>> js = Square.from_json_string(js)
+>>> print(len(js))
+1
+
+>>> type(js) == list
+True
+
+>>> sdict = {"id": None, "size": 3}
+>>> rdict = {"id": 20, "width": 2, "height": 2}
+>>> square5 = Square.create(**sdict)
+>>> rect20 = Rectangle.create(**rdict)
+>>> print(square5.id)
+5
+>>> print(rect20.id)
+20
+>>> loadsquares = Square.load_from_file()
+>>> loadrects = Rectangle.load_from_file()
+>>> type(loadsquares)
+<class 'list'>
+>>> type(loadrects)
+<class 'list'>
+
+>>> Square.save_to_file_csv(loadsquares)
+>>> print(type(Square.load_from_file_csv()[0]))
+<class 'square.Square'>
+>>> Rectangle.save_to_file_csv(loadrects)
+>>> print(type(Rectangle.load_from_file_csv()[0]))
+<class 'rectangle.Rectangle'>

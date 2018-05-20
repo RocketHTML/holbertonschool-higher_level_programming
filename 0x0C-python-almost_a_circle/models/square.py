@@ -14,7 +14,11 @@ class Square(Rectangle):
         attrs = ['id', 'size', 'x', 'y']
         return self.make_dict(self, attrs)
 
-    def update(*args, **kwargs):
+    @staticmethod
+    def attrs():
+        return ['id', 'size', 'x', 'y']
+
+    def update(self, *args, **kwargs):
         attrs = ['id', 'size', 'x', 'y']
         self.setattrs_from_splat(self, attrs, *args, **kwargs)
 
