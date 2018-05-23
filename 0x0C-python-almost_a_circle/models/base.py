@@ -75,7 +75,10 @@ class Base:
         for att in args:
             if att in dictionary and att not in notouch:
                 attrs[att] = 98
-        obj = cls(**attrs)
+        if cls.__name__ == 'Square':
+            obj = cls(1, 1, 1, 1)
+        else:
+            obj = cls(1, 1, 1, 1, 1)
         obj.update(**dictionary)
         return obj
 
