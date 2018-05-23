@@ -67,17 +67,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """documentation"""
-        args = inspect.getargspec(cls).args
-        notouch = ['self']
-        if dictionary['id'] is None:
-            notouch.append('id')
-        attrs = {}
-        for att in args:
-            if att in dictionary and att not in notouch:
-                attrs[att] = 98
         if cls.__name__ == 'Square':
             obj = cls(1)
-        else:
+        elif cls.__name__ == 'Rectangles:
             obj = cls(1, 1)
         obj.update(**dictionary)
         return obj
