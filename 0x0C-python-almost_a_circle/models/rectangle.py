@@ -21,7 +21,7 @@ class Rectangle(Base):
         if type(value) != int:
             raise TypeError(typmsg.format(name))
         if name == 'width' or name == 'height':
-            if value < 0:
+            if value <= 0:
                 raise ValueError(negmsg.format(name))
         if name == 'x' or name == 'y':
             if value < 0:
