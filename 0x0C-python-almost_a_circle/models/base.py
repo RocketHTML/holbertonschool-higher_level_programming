@@ -19,6 +19,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """documentation"""
         def drawrect(turt, x, y, width, height):
             turt.setpos(x, y)
             turt.down()
@@ -37,6 +38,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """documentation"""
         name = cls.__name__
         ret = []
         try:
@@ -55,6 +57,7 @@ class Base:
     def load_from_file(cls):
         """documentation"""
         name = cls.__name__
+        cls.from_json_string()
         try:
             with open("{}.json".format(name), 'r', encoding='utf-8') as f:
                 l = json.load(f)
@@ -64,6 +67,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """documentation"""
         args = inspect.getargspec(cls).args
         notouch = ['self']
         if dictionary['id'] is None:
@@ -78,10 +82,12 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """documentation"""
         return json.loads(json_string)
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """documentation"""
         name = cls.__name__
         attrs = cls.attrs()
         csv_objs = []
