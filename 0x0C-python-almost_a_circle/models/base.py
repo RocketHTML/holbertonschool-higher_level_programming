@@ -53,6 +53,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """documentation"""
         name = cls.__name__
         try:
             with open("{}.json".format(name), 'r', encoding='utf-8') as f:
