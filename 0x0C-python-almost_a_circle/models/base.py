@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""documentation"""
 import json
 import inspect
 import csv
@@ -23,12 +24,12 @@ class Base:
             turt.goto(x+width, y)
             turt.goto(x+width, y+height)
             turt.goto(x, y+height)
-            turt.goto(x,y)
+            turt.goto(x, y)
             turt.up()
         turgle = turtle.Turtle()
         for r in list_rectangles:
             turgle.color('red')
-            drawrect(turgle, r.x, r.y, r.width, r.height)	
+            drawrect(turgle, r.x, r.y, r.width, r.height)
         for s in list_squares:
             turgle.color('blue')
             drawrect(turtle, s.x, s.y, s.width, s.height)
