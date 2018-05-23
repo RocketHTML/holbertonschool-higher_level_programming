@@ -98,12 +98,13 @@ class Base:
     def save_to_file(cls, list_objs):
         """documentation"""
         cls.to_json_string([])
+        list_dicts = [obj.to_dictionary() for obj in list_objs]
         name = cls.__name__
         with open('{}.json'.format(name), mode='w', encoding='utf-8') as f:
             if list_objs is None:
                 json.dump([], f)
             else:
-                json.dump(list_objs, f)
+                json.dump(list_dicts, f)
 
     @staticmethod
     def to_json_string(list_dictionaries):
