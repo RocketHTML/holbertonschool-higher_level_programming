@@ -57,10 +57,9 @@ class Base:
     def load_from_file(cls):
         """documentation"""
         name = cls.__name__
-        cls.from_json_string()
         try:
             with open("{}.json".format(name), 'r', encoding='utf-8') as f:
-                l = json.load(f)
+                l = cls.from_json_string(f.read())
                 return [cls.create(**d) for d in l]
         except FileNotFoundError:
             return []
@@ -83,6 +82,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """documentation"""
+        if json_string is None:
+            return []
         return json.loads(json_string)
 
     @classmethod
@@ -104,7 +105,6 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """documentation"""
-        cls.to_json_string([])
         list_dicts = [obj.to_dictionary() for obj in list_objs]
         name = cls.__name__
         with open('{}.json'.format(name), mode='w', encoding='utf-8') as f:
