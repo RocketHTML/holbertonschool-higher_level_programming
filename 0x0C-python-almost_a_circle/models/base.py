@@ -19,6 +19,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """documentation"""
         def drawrect(turt, x, y, width, height):
             turt.setpos(x, y)
             turt.down()
@@ -37,6 +38,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """documentation"""
         name = cls.__name__
         ret = []
         try:
@@ -53,34 +55,35 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """documentation"""
         name = cls.__name__
         try:
             with open("{}.json".format(name), 'r', encoding='utf-8') as f:
-                l = json.load(f)
+                l = cls.from_json_string(f.read())
                 return [cls.create(**d) for d in l]
         except FileNotFoundError:
             return []
 
     @classmethod
     def create(cls, **dictionary):
-        args = inspect.getargspec(cls).args
-        notouch = ['self']
-        if dictionary['id'] is None:
-            notouch.append('id')
-        attrs = {}
-        for att in args:
-            if att in dictionary and att not in notouch:
-                attrs[att] = 98
-        obj = cls(**attrs)
+        """documentation"""
+        if cls.__name__ == 'Square':
+            obj = cls(1)
+        elif cls.__name__ == 'Rectangle':
+            obj = cls(1, 1)
         obj.update(**dictionary)
         return obj
 
     @staticmethod
     def from_json_string(json_string):
+        """documentation"""
+        if json_string is None:
+            return []
         return json.loads(json_string)
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """documentation"""
         name = cls.__name__
         attrs = cls.attrs()
         csv_objs = []
@@ -97,14 +100,14 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """documentation"""
-        cls.to_json_string([])
-        list_dicts = [obj.to_dictionary() for obj in list_objs]
+        if list_objs is None:
+            list_dicts = None
+        else:
+            list_dicts = [obj.to_dictionary() for obj in list_objs]
+        js = cls.to_json_string(list_dicts)
         name = cls.__name__
         with open('{}.json'.format(name), mode='w', encoding='utf-8') as f:
-            if list_objs is None:
-                json.dump([], f)
-            else:
-                json.dump(list_dicts, f)
+            f.write(js)
 
     @staticmethod
     def to_json_string(list_dictionaries):
