@@ -28,7 +28,11 @@ if __name__ == "__main__":
 
     def main():
         res = cur.execute(query, (argv[4],))
+        delimiter = ""
         for i in cur.fetchall():
-            print(i)
+            print(delimiter, end="")
+            print(i[1], end="")
+            delimiter = ", "
+        print()
 
     main()
