@@ -20,8 +20,8 @@ cur = db.cursor()
 
 
 def main():
-    res = cur.execute("SELECT * FROM states
-                      WHERE name REGEXP '^N+.*' ORDER BY id ASC")
+    res = cur.execute("""SELECT * FROM states
+                      WHERE name REGEXP '^N+.*' ORDER BY id ASC""")
     for i in cur.fetchall():
         print(i)
 
