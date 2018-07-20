@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-# lists all states from the database hbtn_0e_0_usa
-# args: mysql_username, mysql_password, database_name
-# goals: Module that can create, read, update, delete records from a table
-#	(e.g.) so that I can add or update user info
-#		I'll use sql scripts to create, read, update, delete tables from a database
+"""
+lists all states from the database hbtn_0e_0_usa
+args: mysql_username, mysql_password, database_name
+goals: Module that can create, read, update, delete records from a table
+	(e.g.) so that I can add or update user info
+		I'll use sql scripts to create, read, update, delete tables from a database
+"""
 import MySQLdb
 from sys import argv
+
 
 if (len(argv) != 4):
     print("(usage): states.py <db_username>, <db_password>, <db_name>")
