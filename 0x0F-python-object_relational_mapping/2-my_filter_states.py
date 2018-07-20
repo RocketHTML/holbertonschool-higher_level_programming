@@ -18,10 +18,11 @@ if __name__ == "__main__":
     db = MySQLdb.connect(**SERVER)
     cur = db.cursor()
     state = argv[4]
-    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC"
+    collate = "(name COLLATE latin1_general_cs)"
+    query = "SELECT * FROM states WHERE {}='{}' ORDER BY id ASC"
 
     def main():
-        res = cur.execute(query.format(state))
+        res = cur.execute(query.format(collate, state))
         for i in cur.fetchall():
             print(i)
 
