@@ -18,7 +18,12 @@ if __name__ == "__main__":
     db = MySQLdb.connect(**SERVER)
     cur = db.cursor()
     collate = "(name COLLATE latin1_general_cs)"
-    query = "SELECT * FROM cities ORDER BY id ASC"
+    C = "cities as C"
+    S = "states as S"
+    COLS = "C.id, C.name, S.name"
+    J = "INNER JOIN {} ON S.id = C.state_id".format(S)
+    O = "ORDER BY C.id ASC"
+    query = "SELECT {} FROM {} {}".format(COLS, C, J, O)
 
     def main():
         res = cur.execute(query)
