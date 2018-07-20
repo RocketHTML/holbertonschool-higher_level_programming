@@ -9,7 +9,7 @@ from sys import argv
 if (len(argv) != 4):
 	print("(usage): states.py <db_username>, <db_password>, <db_name>")
 
-SERVER = {'host': 'localhost', 'port': 3306, 'user': argv[1], 'db': argv[3]}
+SERVER = {'host': 'localhost', 'port': 3306, 'user': argv[1], 'passwd': argv[2], 'db': argv[3]}
 db = MySQLdb.connect(**SERVER)
 cur = db.cursor()
 
