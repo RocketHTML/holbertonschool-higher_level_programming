@@ -21,9 +21,13 @@ cur = db.cursor()
 
 def main():
     res = cur.execute("""SELECT * FROM states
-                      WHERE name REGEXP '^N+.*' ORDER BY id ASC""")
+                      WHERE (name COLLATE latin1_general_cs) REGEXP '^N+.*'
+                      ORDER BY id ASC""")
     for i in cur.fetchall():
         print(i)
+
+    cur.close()
+    db.close()
 
 
 if __name__ == '__main__':
