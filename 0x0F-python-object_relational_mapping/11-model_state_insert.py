@@ -24,3 +24,7 @@ if __name__ == '__main__':
     louisiana = State(name="Louisiana")
     session.add(louisiana)
     session.commit
+
+    query = session.query(State)
+    for s in query.order_by(State.id).all():
+        print("{}: {}".format(s.id, s.name))
