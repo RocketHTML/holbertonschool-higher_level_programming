@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     louisiana = State(name="Louisiana")
     session.add(louisiana)
-    session.commit
+    session.commit()
 
     query = session.query(State).filter(State.name == "Louisiana")
     s = query.first()
