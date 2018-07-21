@@ -25,6 +25,9 @@ if __name__ == '__main__':
     session.add(louisiana)
     session.commit
 
-    query = session.query(State)
-    for s in query.order_by(State.id).all():
-        print("{}: {}".format(s.id, s.name))
+    query = session.query(State).filter(State.name == "Louisiana")
+    s = query.first()
+    if (s):
+        print(s.id)
+    else:
+        print("Not found")
