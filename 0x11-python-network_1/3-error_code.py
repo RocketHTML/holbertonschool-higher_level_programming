@@ -12,7 +12,7 @@ if __name__ == '__main__':
             html = req.read().decode('utf-8')
             print(html)
     except HTTPError as h:
-        print(h.read().decode('utf-8'))
+        print('Error code: {}'.format(h.code))
     except URLError as e:
         print('We failed to reach the server')
         print('Reason: ', e.reason)
