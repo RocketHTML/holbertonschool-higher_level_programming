@@ -8,4 +8,4 @@ if __name__ == '__main__':
     url = argv[1]
     data = {'email': argv[2]}
     r = requests.get(url, data=data)
-    print(r.text)
+    print('Your email is: {}'.format(r.text))
