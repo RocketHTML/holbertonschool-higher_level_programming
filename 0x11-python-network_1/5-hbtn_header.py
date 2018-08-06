@@ -4,7 +4,7 @@
 
 if __name__ == '__main__':
     import requests
-    from sys import argv
-    r = requests.get(argv[1])
+    import sys
+    r = requests.get(sys.argv[1])
     xreqheader = r.headers['X-Request-Id']
     print(xreqheader)
