@@ -3,8 +3,8 @@
 
 
 if __name__ == '__main__':
-    import requests as rq
+    import requests
     from sys import argv
-    r = rq.get(argv[1])
+    r = requests.get(argv[1])
     xreqheader = r.headers['X-Request-Id']
     print(xreqheader)
